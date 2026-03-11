@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
+import os
 
 # -----------------------------
 # Page Configuration
@@ -22,15 +23,32 @@ st.title("🎓 College Event Feedback Analytics")
 st.markdown("Analyze student feedback from the **3-day college event** using NLP and Machine Learning.")
 
 # -----------------------------
+# File Path (Cloud Safe)
+# -----------------------------
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_PATH = os.path.join(BASE_DIR, "data", "processed", "sentiment_results.csv")
+
+# -----------------------------
 # Load Data
 # -----------------------------
 
 @st.cache_data
 def load_data():
-    pd.read_csv("./data/processed/sentiment_results.csv")
+
+    if not os.path.exists(DATA_PATH):
+        st.error("Dataset not found. Please generate sentiment_results.csv first.")
+        return pd.DataFrame()
+
+    df = pd.read_csv(DATA_PATH)
+
     return df
 
+
 df = load_data()
+
+if df.empty:
+    st.stop()
 
 # -----------------------------
 # Sidebar Filters
@@ -60,6 +78,8 @@ if sentiment_filter != "All":
 # Metrics Section
 # -----------------------------
 
+st.subheader("📊 Feedback Summary")
+
 total_reviews = len(filtered_df)
 positive_reviews = (filtered_df["sentiment"] == "positive").sum()
 negative_reviews = (filtered_df["sentiment"] == "negative").sum()
@@ -78,43 +98,47 @@ st.markdown("---")
 
 col4, col5 = st.columns(2)
 
-# Sentiment Pie Chart
 with col4:
+
     st.subheader("Sentiment Distribution")
 
     sentiment_counts = filtered_df["sentiment"].value_counts()
 
-    fig1 = px.pie(
-        values=sentiment_counts.values,
-        names=sentiment_counts.index,
-        color=sentiment_counts.index,
-        color_discrete_map={
-            "positive": "green",
-            "negative": "red"
-        }
-    )
+    if not sentiment_counts.empty:
 
-    st.plotly_chart(fig1, use_container_width=True)
+        fig1 = px.pie(
+            values=sentiment_counts.values,
+            names=sentiment_counts.index,
+            color=sentiment_counts.index,
+            color_discrete_map={
+                "positive": "green",
+                "negative": "red"
+            }
+        )
 
-# Sentiment by Day
+        st.plotly_chart(fig1, use_container_width=True)
+
 with col5:
+
     st.subheader("Sentiment by Day")
 
-    day_sentiment = filtered_df.groupby(["day","sentiment"]).size().reset_index(name="count")
+    day_sentiment = filtered_df.groupby(["day", "sentiment"]).size().reset_index(name="count")
 
-    fig2 = px.bar(
-        day_sentiment,
-        x="day",
-        y="count",
-        color="sentiment",
-        barmode="group",
-        color_discrete_map={
-            "positive": "green",
-            "negative": "red"
-        }
-    )
+    if not day_sentiment.empty:
 
-    st.plotly_chart(fig2, use_container_width=True)
+        fig2 = px.bar(
+            day_sentiment,
+            x="day",
+            y="count",
+            color="sentiment",
+            barmode="group",
+            color_discrete_map={
+                "positive": "green",
+                "negative": "red"
+            }
+        )
+
+        st.plotly_chart(fig2, use_container_width=True)
 
 st.markdown("---")
 
@@ -122,23 +146,27 @@ st.markdown("---")
 # Word Cloud Section
 # -----------------------------
 
-st.subheader("Word Cloud of Feedback")
+st.subheader("☁ Word Cloud of Feedback")
 
-text = " ".join(filtered_df["review"].astype(str))
+if len(filtered_df) > 0:
 
-wordcloud = WordCloud(
-    width=1000,
-    height=400,
-    background_color="white",
-    colormap="viridis"
-).generate(text)
+    text = " ".join(filtered_df["review"].astype(str))
 
-fig, ax = plt.subplots()
+    if text.strip() != "":
 
-ax.imshow(wordcloud)
-ax.axis("off")
+        wordcloud = WordCloud(
+            width=1000,
+            height=400,
+            background_color="white",
+            colormap="viridis"
+        ).generate(text)
 
-st.pyplot(fig)
+        fig, ax = plt.subplots()
+
+        ax.imshow(wordcloud)
+        ax.axis("off")
+
+        st.pyplot(fig)
 
 st.markdown("---")
 
@@ -146,7 +174,7 @@ st.markdown("---")
 # Reviews Table
 # -----------------------------
 
-st.subheader("Student Reviews")
+st.subheader("📋 Student Reviews")
 
 st.dataframe(filtered_df, use_container_width=True)
 
