@@ -1,0 +1,61 @@
+day,review,clean_review,sentiment
+Day 1,Sports events were exciting and well organized,sports events were exciting and well organized,positive
+Day 2,Dance performances were amazing and energetic,dance performances were amazing and energetic,positive
+Day 3,Speech was inspiring and motivational,speech was inspiring and motivational,positive
+Day 1,Sports events were boring and poorly managed,sports events were boring and poorly managed,negative
+Day 2,Dance performances were dull and disappointing,dance performances were dull and disappointing,negative
+Day 3,Speech was boring and too long,speech was boring and too long,negative
+Day 1,Food stalls were good and enjoyable,food stalls were good and enjoyable,positive
+Day 2,Flash mob was energetic and fun,flash mob was energetic and fun,positive
+Day 3,Prize distribution was well organized,prize distribution was well organized,positive
+Day 1,Food stalls were overpriced and poorly managed,food stalls were overpriced and poorly managed,negative
+Day 2,Flash mob was confusing and messy,flash mob was confusing and messy,negative
+Day 3,Prize distribution was badly organized,prize distribution was badly organized,negative
+Day 1,Sports competitions were thrilling,sports competitions were thrilling,positive
+Day 2,Cultural dances were fantastic,cultural dances were fantastic,positive
+Day 3,Speeches were inspiring,speeches were inspiring,positive
+Day 1,Sports competitions were dull and unorganized,sports competitions were dull and unorganized,negative
+Day 2,Cultural shows were boring,cultural shows were boring,negative
+Day 3,Speeches were not interesting,speeches were not interesting,negative
+Day 1,Sports day arrangements were excellent,sports day arrangements were excellent,positive
+Day 2,Dance teams performed brilliantly,dance teams performed brilliantly,positive
+Day 3,Academic awards ceremony was inspiring,academic awards ceremony was inspiring,positive
+Day 1,Sports day arrangements were terrible,sports day arrangements were terrible,negative
+Day 2,Dance teams performed poorly,dance teams performed poorly,negative
+Day 3,Academic awards ceremony was boring,academic awards ceremony was boring,negative
+Day 1,Stalls were interesting and fun,stalls were interesting and fun,positive
+Day 2,Flash mob was exciting,flash mob was exciting,positive
+Day 3,Speakers were motivating,speakers were motivating,negative
+Day 1,Stalls were chaotic and crowded,stalls were chaotic and crowded,negative
+Day 2,Flash mob had no energy,flash mob had no energy,positive
+Day 3,Speakers were unengaging,speakers were unengaging,negative
+Day 1,Sports organization was good,sports organization was good,positive
+Day 2,Dance performances were great,dance performances were great,positive
+Day 3,Program was enjoyable,program was enjoyable,positive
+Day 1,Sports organization was confusing,sports organization was confusing,negative
+Day 2,Dance performances were weak,dance performances were weak,negative
+Day 3,Program was very long,program was very long,positive
+Day 1,Sports competitions were exciting,sports competitions were exciting,positive
+Day 2,Cultural events were lively,cultural events were lively,positive
+Day 3,Speech was inspiring,speech was inspiring,positive
+Day 1,Sports competitions were boring,sports competitions were boring,negative
+Day 2,Cultural events lacked energy,cultural events lacked energy,negative
+Day 3,Speech was uninspiring,speech was uninspiring,positive
+Day 1,Food stalls had great variety,food stalls had great variety,positive
+Day 2,Dance shows were amazing,dance shows were amazing,positive
+Day 3,Prize ceremony was well managed,prize ceremony was well managed,positive
+Day 1,Food stalls had poor quality,food stalls had poor quality,negative
+Day 2,Dance shows were disappointing,dance shows were disappointing,negative
+Day 3,Prize ceremony was poorly handled,prize ceremony was poorly handled,negative
+Day 1,Sports events were fun and exciting,sports events were fun and exciting,positive
+Day 2,Dance programs were fantastic,dance programs were fantastic,positive
+Day 3,Speeches were excellent,speeches were excellent,positive
+Day 1,Sports events were dull and boring,sports events were dull and boring,negative
+Day 2,Dance programs were repetitive,dance programs were repetitive,negative
+Day 3,Speeches were extremely boring,speeches were extremely boring,negative
+Day 1,Sports day was exciting and fun,sports day was exciting and fun,positive
+Day 2,Flash mob was fantastic,flash mob was fantastic,positive
+Day 3,Academic session was very informative,academic session was very informative,negative
+Day 1,Sports day was badly organized,sports day was badly organized,negative
+Day 2,Flash mob performance was bad,flash mob performance was bad,negative
+Day 3,Academic session was boring,academic session was boring,negative
